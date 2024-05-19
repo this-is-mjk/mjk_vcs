@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"mjk_vcs/cmds"
 	"mjk_vcs/helper"
 	"os"
 )
@@ -21,9 +22,9 @@ func main() {
 		case "help":
 			helper.PrintHelp()
 		case "init":
-			helper.Init()
+			cmds.Init()
 		case "commit":
-			helper.Commit()
+			cmds.Commit()
 		default:
 			fmt.Printf("mjk: not valid command %s\n", args[1])
 			helper.PrintHelp()
