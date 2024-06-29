@@ -29,10 +29,18 @@ func main() {
 	case "init":
 		commands.Init()
 	case "add":
-		commands.Add()
+		commands.Add(args[1:])
 	case "commit":
 		commitCmd.Parse(args[1:])
 		commands.Commit(commitMessage)
+	case "status":
+		commands.Status()
+	case "branch":
+		commands.Branch(args[1:])
+	case "checkout":
+		commands.Checkout(args[1])
+	case "test":
+		commands.Test()
 	default:
 		fmt.Printf("mjk: not valid command %s\n", args[0])
 		utils.PrintHelp()

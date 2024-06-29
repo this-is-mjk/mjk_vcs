@@ -1,14 +1,14 @@
 package fileUtils
 
 import (
-	"fmt"
 	"os"
 )
 
-func ReadFile(path string) []byte {
+func ReadFile(path string) ([]byte, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
-		fmt.Printf("Error reading file\nERROR:- %s", err)
+		// fmt.Println("Error in reading the file")
+		return nil, err
 	}
-	return data
+	return data, nil
 }
