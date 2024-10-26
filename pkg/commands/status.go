@@ -20,11 +20,6 @@ func Status() {
 	lastCommitId, _ := fileUtils.ReadFile(filepath.Join(".", branch))
 	treeId := modles.ReadCommit(string(lastCommitId)).Tree
 	// read tree
-	modles.ShowTree(modles.ReadTree(treeId))
-
-	// read the commit id form the current pointer
-	// read the commit
-	// decompress the commit body, make a commit struct now, change it also in commit package
-	// make blob struct, tree struct
+	modles.ReadTree(treeId)
 	// itrate over all the files in the directory, check it exist in index file, if exist then check the hash of the file with the hash in the index file, then check the hash of the file with the hash in the commit file,
 }

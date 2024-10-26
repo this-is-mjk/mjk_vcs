@@ -41,7 +41,7 @@ func Decompress(compressedData bytes.Buffer, data interface{}) {
 
 	// Create a buffer with the decompressed data
 	bufferForGob := bytes.NewBuffer(decompressedData)
-
+	fmt.Printf("Decompressed data: %s\n", bufferForGob)
 	// Create a new gob decoder and decode the data into the provided struct
 	decoder := gob.NewDecoder(bufferForGob)
 	err = decoder.Decode(data)

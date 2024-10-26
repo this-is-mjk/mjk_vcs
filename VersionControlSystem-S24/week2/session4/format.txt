@@ -1,0 +1,21 @@
+->FORMAT of Objects
+
+1-> BLOB 
+
+blob (length_of_content)(NULL_BYTE)(content)
+
+2-> TREE
+
+tree (length_of_content)(NULL_BYTE)(file1_MODE) (file1_NAME)(NULL_BYTE)(objID1)(file2_MODE) (file2_NAME)(NULL_BYTE)(objID2)(file3_NAME)(NULL_BYTE)..........
+
+content here is after null byte, so it's lenght has to be considered 
+
+3-> COMMIT
+
+commit (lenght_of_content)(NULL_BYTE)tree (TREE_ID)
+author (NAME) (EMAIL) (TIME_STRING)
+committer (NAME) (EMAIL) (TIME_STRING)
+
+Again content here is after null byte 
+
+* Also if you are implementing ahead of root-commit then format of commit will include a parent above author => parent (PARENT_COMMIT_ID)

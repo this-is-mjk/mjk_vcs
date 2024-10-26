@@ -9,7 +9,6 @@ import (
 
 	"github.com/this-is-mjk/mjk/modles"
 	creator "github.com/this-is-mjk/mjk/pkg/utils/componentCreater"
-	"github.com/this-is-mjk/mjk/pkg/utils/fileUtils"
 )
 
 func Add(filesToAdd []string) {
@@ -17,8 +16,9 @@ func Add(filesToAdd []string) {
 		fmt.Println("No files to add, please provide")
 		return
 	}
-	// read index file
-	pwd := fileUtils.Get_pwd()
+	// // read index file
+	// pwd := fileUtils.Get_pwd()
+	pwd := "."
 
 	// Read index file
 	IndexFile := creator.ReadIndex()

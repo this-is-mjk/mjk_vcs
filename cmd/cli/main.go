@@ -39,6 +39,8 @@ func main() {
 		commands.Branch(args[1:])
 	case "checkout":
 		commands.Checkout(args[1])
+	case "cat-file":
+		commands.CatFile(args[1:])
 	case "test":
 		commands.Test()
 	default:

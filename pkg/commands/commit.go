@@ -12,13 +12,12 @@ import (
 
 func Commit(commitMessage *string) {
 	PWD := fileUtils.Get_pwd()
-
-	tree, isEmpty := creator.Tree(PWD, creator.ReadIndex())
+	tree, isEmpty := creator.Tree(PWD, creator.ReadIndex(), PWD)
 	if isEmpty {
 		fmt.Println("Nothing to commit, please add files to commit")
 		return
 	}
-	commit := modles.GetCommitBody(tree, modles.GetParentCommitId(), commitMessage)
+	commit := modles.GetCommitBody(tree.Hash, modles.GetParentCommitId(), commitMessage)
 	modles.ShowCommit(commit)
 	commit_sha1 := utils.Sha1(commit)
 	creator.Object(commit_sha1, fileUtils.Compress(commit))
@@ -27,5 +26,5 @@ func Commit(commitMessage *string) {
 	buffer.WriteString(commit_sha1)
 	// get the current branch and write the commit id to the branch file
 	fileUtils.WriteFile(utils.GetCurrentBranch(), buffer)
-	modles.ShowCommit(commit)
+	fmt.Println(modles.ShowCommit(commit))
 }

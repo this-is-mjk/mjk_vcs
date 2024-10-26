@@ -2,6 +2,7 @@ package modles
 
 import (
 	"bytes"
+	"fmt"
 	"path/filepath"
 
 	"github.com/this-is-mjk/mjk/pkg/utils/fileUtils"
@@ -9,8 +10,9 @@ import (
 
 type Tree struct {
 	Signature       string
+	Hash            string
 	NumberOfEntries int
-	Entries         map[string]StageFile
+	Entries         []StageFile
 }
 
 func (data *Tree) Decompress(compressedData bytes.Buffer) {
@@ -23,9 +25,9 @@ func ReadTree(Id string) Tree {
 	return tree
 }
 func ShowTree(tree Tree) string {
-	returnString := ""
-	for key, value := range tree.Entries {
-		returnString += key + " " + value.FileType + "\n"
+	returnString := tree.Signature + fmt.Sprintf(" %d\n", tree.NumberOfEntries)
+	for _, entry := range tree.Entries {
+		returnString += entry.FileType + " " + entry.Name + " " + entry.Hash + "\n"
 	}
 	return returnString
 }
